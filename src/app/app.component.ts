@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+
+
+import TweenMaxModule from "gsap/TweenMax";
+import { TimelineMax } from 'gsap';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app-greensock';
+
+  @ViewChild('btnAnimated') btnAnimated: ElementRef;
+
+  animated():void {
+
+    let timeLine = new TimelineMax();
+
+    timeLine.to(this.btnAnimated.nativeElement, 1, {
+      y: -100,
+      opacity: 0
+    })
+
+  }
+  
 }
